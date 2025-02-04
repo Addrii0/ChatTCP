@@ -31,20 +31,20 @@ public class MainServer  {
     // Metodo sincronizado para verificar y registrar un nuevo nombre
     public static synchronized boolean registrarNombre(String nombre) {
         if (nombresClientes.contains(nombre)) {
-            return false; // Nombre ya en uso
+            return false; // Nombre en uso
         }else {
             nombresClientes.add(nombre);
             return true;
         }
     }
 
-    // Metodo para eliminar un cliente cuando se desconecta
+    // Metodo para eliminar un usuario cuando se desconecta
     public static synchronized void eliminarCliente(HiloCliente cliente, String nombre) {
         clientes.remove(cliente);
         nombresClientes.remove(nombre);
     }
 
-    // Metodo para enviar mensajes a todos los clientes
+    // Metodo para enviar mensajes a todos los usuarios
     public static synchronized void broadcast(String mensaje, HiloCliente remitente) {
         for (HiloCliente cliente : clientes) {
             if (cliente != remitente) {
@@ -52,6 +52,7 @@ public class MainServer  {
             }
         }
     }
+    // Método para agregar nuevo usuario 
     public static synchronized void agregarCliente(HiloCliente cliente) {
         clientes.add(cliente);
     }
