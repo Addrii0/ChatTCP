@@ -28,7 +28,7 @@ public class HiloCliente implements Runnable{
                 nombreCliente = entrada.readUTF();
                 if (MainServer.registrarNombre(nombreCliente)) {
                     salida.writeUTF("ACEPTADO");
-                    MainServer.agregarCliente(this); // Agregar el cliente a la lista activa
+                    MainServer.agregarCliente(this); // Agregar al usuario a la lista 
                     disponible = true;
                 } else {
                     salida.writeUTF("NOMBRE EN USO");
